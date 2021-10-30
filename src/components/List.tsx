@@ -1,15 +1,7 @@
 import { FC } from 'react';
+import { People } from '../App';
 
-interface IProps {
-   people: {
-      name: string;
-      age: number;
-      url: string;
-      note?: string;
-   }[];
-}
-
-const List: FC<IProps> = ({ people }) => {
+const List: FC<People> = ({ people }) => {
    const renderList = (): JSX.Element[] => {
       return people.map(({ name, age, url, note }) => {
          return (

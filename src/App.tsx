@@ -1,7 +1,9 @@
-import { useState } from "react";
-import List from "./components/List";
+import { useState } from 'react';
+import List from './components/List';
+import './app.css';
+import AddToList from './components/AddToList';
 
-interface IState {
+export interface People {
    people: {
       name: string;
       age: number;
@@ -11,12 +13,13 @@ interface IState {
 }
 
 const App = () => {
-   const [people, setPeople] = useState<IState['people']>([])
+   const [people, setPeople] = useState<People['people']>([]);
    return (
-      <>
+      <div className="App">
          <h1>People Invited to my Party</h1>
          <List people={people} />
-      </>
+         <AddToList people={people} setPeople={setPeople} />
+      </div>
    );
 };
 

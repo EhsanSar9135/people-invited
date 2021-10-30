@@ -1,4 +1,10 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react';
+import { People } from '../App';
+
+interface PeopleState {
+   people: People['people'];
+   setPeople: Dispatch<SetStateAction<People['people']>>;
+}
 
 const initialState = {
    name: '',
@@ -7,13 +13,13 @@ const initialState = {
    img: '',
 };
 
-const AddToList = () => {
+const AddToList: FC<PeopleState> = ({ people, setPeople }) => {
    const [input, setInput] = useState(initialState);
    const { name, age, note, img } = input;
 
    const onChangeHandler = (
       event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-   ) => {
+   ): void => {
       setInput({
          ...input,
          [event.target.name]: event.target.value,
@@ -53,6 +59,7 @@ const AddToList = () => {
             onChange={onChangeHandler}
             name="note"
          />
+         <button className="AddToList-btn">Add To List</button>
       </div>
    );
 };
