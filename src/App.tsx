@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface IState {
+   people: {
+      name: string;
+      age: number;
+      url: string;
+      note?: string;
+   }[];
 }
+
+const App = () => {
+   const [people, setPeople] = useState<IState[]>([])
+   return (
+      <>
+         <h1>People Invited to my Party</h1>
+      </>
+   );
+};
 
 export default App;
