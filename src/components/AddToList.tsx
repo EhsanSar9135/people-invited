@@ -1,7 +1,7 @@
 import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react';
 import { People } from '../App';
 
-interface PeopleState {
+export interface PeopleState {
    people: People['people'];
    setPeople: Dispatch<SetStateAction<People['people']>>;
 }
@@ -23,6 +23,27 @@ const AddToList: FC<PeopleState> = ({ people, setPeople }) => {
       setInput({
          ...input,
          [event.target.name]: event.target.value,
+      });
+   };
+
+   const onClickHandler = (): void => {
+      if (!name || !age) {
+         return;
+      }
+      setPeople([
+         ...people,
+         {
+            name,
+            age: parseInt(age),
+            img,
+            note,
+         },
+      ]);
+      setInput({
+         name: '',
+         age: '',
+         note: '',
+         img: '',
       });
    };
 
@@ -59,7 +80,9 @@ const AddToList: FC<PeopleState> = ({ people, setPeople }) => {
             onChange={onChangeHandler}
             name="note"
          />
-         <button className="AddToList-btn">Add To List</button>
+         <button onClick={onClickHandler} className="AddToList-btn">
+            Add To List
+         </button>
       </div>
    );
 };

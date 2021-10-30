@@ -3,13 +3,13 @@ import { People } from '../App';
 
 const List: FC<People> = ({ people }) => {
    const renderList = (): JSX.Element[] => {
-      return people.map(({ name, age, url, note }) => {
+      return people.map(({ name, age, img, note }) => {
          return (
             <li className="list">
-               <header className="list-header">
-                  <img className="list-img" src={url} alt={name} />
+               <div className="list-header">
+                  <img className="list-img" src={img} alt={name} />
                   <h2>{name}</h2>
-               </header>
+               </div>
                <p>{age} years old</p>
                <p className="list-note">{note}</p>
             </li>
