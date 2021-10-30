@@ -14,12 +14,12 @@ const List: FC<IProps> = ({ people }) => {
       return people.map(({ name, age, url, note }) => {
          return (
             <li className="list">
-               <header className="list_header">
-                  <img className="list_img" src={url} alt={name} />
+               <header className="list-header">
+                  <img className="list-img" src={url} alt={name} />
                   <h2>{name}</h2>
                </header>
                <p>{age} years old</p>
-               <p className="list_note">{note}</p>
+               <p className="list-note">{note}</p>
             </li>
          );
       });
